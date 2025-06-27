@@ -54,7 +54,7 @@ const Chatcontainer = ({selectedUser,setselectedUser}) => {
 
           {/* Bottom area ----------------- */ }
 
-          <div className='absolute bottom-0 left-0 right-0 flx items-center gap-3 p-3'>
+          <div className='absolute bottom-0 left-0 right-0 flex items-center gap-3 p-3'>
 
             <div className='flex-1 flex items-center bg-gray-100/12 px-3 rounded-full'>
               <input type="text" placeholder='send a message' 
@@ -66,7 +66,7 @@ const Chatcontainer = ({selectedUser,setselectedUser}) => {
               </label>
 
             </div>
-            <img src={assets.send_icon} alt="" className='w-7 cursor-pointer'/>
+            <img src={assets.send_button} alt="" className='w-7 cursor-pointer'/>
 
           </div>
 
