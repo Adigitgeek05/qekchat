@@ -10,7 +10,35 @@ import {Server} from 'socket.io';
 
 const app = express();
 const server = http.createServer(app);
+// Socket.io setup
+export const io= new Server(server, {
+    cors: {
+        origin: "*" // Update with your client URL
+        
+    }
+});
+// store online users
+export const userSocketMap={};
+// Handle socket connections
+io.on("connection", (socket) => {
+    const userId = socket.handshake.query.userId;
+    console.log("User connected:", userId );
 
+    if(userId) {
+        userSocketMap[userId]= socket.id;
+
+
+    }
+    //Emit  online users to all connected clients
+    io.emit("onlineUsers", Object.keys(userSocketMap));
+
+    socket.on("disconnect"), () => {
+        console.log("User disconnected:", userId);
+        delete userSocketMap[userId];
+        // Emit updated online users to all connected clients
+        io.emit("onlineUsers", Object.keys(userSocketMap));
+    }
+});
 
 
 
