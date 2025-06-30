@@ -4,6 +4,8 @@ import cors from 'cors';
 import http from 'http';
 import { connectDB } from './lib/db.js';
 import UserRouter from './routes/userroutes.js';
+import messageRouter from './routes/messageroutes.js';
+import {Server} from 'socket.io';
 
 
 const app = express();
@@ -20,6 +22,7 @@ app.use("/api/status", (req,res) => {
     res.send("Server is running");
 })
 app.use("/api/auth", UserRouter);
+app.use("/api/messages",messageRouter);
 
 //Database
 await connectDB();
