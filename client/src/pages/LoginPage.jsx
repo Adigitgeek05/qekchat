@@ -13,7 +13,7 @@ const LoginPage = () => {
   const onSubmitHandler =(event) => {
     event.preventDefault();
 
-    if(currState=== 'Sign up' && !isDataSubmitted){
+    if(currState=== 'Sign Up' && !isDataSubmitted){
       setIsDataSubmitted(true)
       return;
     }
